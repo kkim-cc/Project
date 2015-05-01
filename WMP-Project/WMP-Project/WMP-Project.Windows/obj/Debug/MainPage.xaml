@@ -1,0 +1,108 @@
+﻿<Page
+    x:Name="pageRoot"
+    x:Class="WMP_Project.MainPage"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WMP_Project"
+    xmlns:common="using:WMP_Project.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    
+    
+    <Page.Resources>
+        <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
+        <x:String x:Key="AppName">WMP-Project: Puzzle</x:String>
+    </Page.Resources>
+
+    <Page.BottomAppBar>
+        <CommandBar HorizontalContentAlignment="Stretch" FlowDirection="RightToLeft">
+            <AppBarButton x:ConnectionId='1' x:Name="Board" Icon="Bullets" Label="Game Score"                           ></AppBarButton>
+            <AppBarSeparator />
+            <AppBarButton x:ConnectionId='2' x:Name="Pause" Icon="Pause" Label="Pause"                           ></AppBarButton>
+            <AppBarButton x:ConnectionId='3' x:Name="Start" Icon="Play" Label="Start/Resume"                           ></AppBarButton>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <!--
+        This grid acts as a root panel for the page that defines two rows:
+        * Row 0 contains the back button and page title
+        * Row 1 contains the rest of the page layout
+    -->
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Back button and page title -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+                        Style="{StaticResource NavigationBackButtonNormalStyle}"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Back"
+                        AutomationProperties.AutomationId="BackButton"
+                        AutomationProperties.ItemType="Navigation Button"/>
+            <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,60"/>
+            <TextBlock x:Name="Authors" Text="Authors: Duckie Kim, Rob Dagenais" Grid.Column="1" HorizontalAlignment="Left" Margin="0,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="1216" FontSize="22"/>
+            <Grid Grid.Column="1" HorizontalAlignment="Left" Height="536" Margin="115,142,0,-538" VerticalAlignment="Top" Width="553">
+                <StackPanel HorizontalAlignment="Left" Height="536" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="553">
+                    <Canvas x:ConnectionId='10' x:Name="quizCanvas" ManipulationMode="All"
+                                                  >
+                    <ItemsControl x:Name="rectangleItems" Height="531">
+                        <ItemsControl.ItemContainerTransitions>
+                            <TransitionCollection>
+
+                                <!-- Without this, there would be no animation when items 
+                 are removed. -->
+                                <RepositionThemeTransition/>
+                            </TransitionCollection>
+                        </ItemsControl.ItemContainerTransitions>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapGrid Height="500">
+                                    <WrapGrid.ChildrenTransitions>
+                                        <!-- Apply a ReorderThemeTransition that will run when child elements are reordered. -->
+                                        <TransitionCollection>
+                                            <ReorderThemeTransition />
+                                        </TransitionCollection>
+                                    </WrapGrid.ChildrenTransitions>
+                                </WrapGrid>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                    </Canvas>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="530" Margin="0,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="242">
+            <Button x:ConnectionId='4' x:Name="btnLoadImage" Content="Load Image" HorizontalAlignment="Left" Margin="20,20,0,0" 
+                    VerticalAlignment="Top" RenderTransformOrigin="-0.416,0.356" Width="197"                           />
+            <Button x:ConnectionId='5' x:Name="btnCaptureImage" Content="Capture Image" HorizontalAlignment="Left" Margin="20,70,0,0" 
+                    VerticalAlignment="Top" RenderTransformOrigin="-0.416,0.356" Width="197"                              />
+            <Button x:ConnectionId='6' x:Name="btnStartGame" Content="Start/Resume" HorizontalAlignment="Left" Margin="20,120,0,0" 
+                    VerticalAlignment="Top" RenderTransformOrigin="-0.416,0.356" Width="197"                           />
+            <Button x:ConnectionId='7' x:Name="btnPauseGame" Content="Pause" HorizontalAlignment="Left" Margin="20,170,0,0" 
+                    VerticalAlignment="Top" RenderTransformOrigin="-0.416,0.356" Width="197"                           />
+            <Button x:ConnectionId='8' x:Name="btnClearGame" Content="Restart Game" HorizontalAlignment="Left" Margin="20,220,0,0" 
+                    VerticalAlignment="Top" RenderTransformOrigin="-0.416,0.356" Width="197"                           />
+            <Button x:ConnectionId='9' x:Name="btnGameScore" Content="Game Score" HorizontalAlignment="Left" Margin="20,300,0,0" 
+                    VerticalAlignment="Top" RenderTransformOrigin="-0.416,0.356" Width="197"                           />
+            <TextBlock x:Name="GTime" Text="Elapsed Time:"  HorizontalAlignment="Left" Margin="20,350,0,0" 
+                       Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Width="197"/>
+            <TextBlock x:Name="ELog" Text=""  HorizontalAlignment="Left" Margin="20,400,0,0" 
+                       Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Width="197"/>
+        </Grid>
+    </Grid>
+</Page>
+

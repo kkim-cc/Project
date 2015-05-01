@@ -1,0 +1,1 @@
+C:\C#\WMP-Project\WMP-Project\WMP-Project.Windows\WMP-Project.Windows.csproj;neutral
