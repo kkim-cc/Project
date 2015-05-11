@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<?php
+session_start(); // Starting Session
+$error = "";
+$success = ""
+if(isset($_SESSION['upload_csv'])){
+  echo "Current uploaded CSV File:" . $_SESSION['upload_csv']);
+}
+if(isset($_SESSION['upload_success'])){
+  $success = $_SESSION['upload_success'];
+}
+if(isset($_SESSION['upload_error'])){
+  $error = $_SESSION['upload_error'];
+}
+
+?>
+<span><?php echo $error; ?></span>
+<div id="upload">
+<form action="php/upload.php" method="post" enctype="multipart/form-data">
+    Select CSV to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload CSV" name="submit">
+    
+</form>
+</div>
+<div id="error"><span><?php echo $error; ?></span></div>
+<div id="success"><span><?php echo $success; ?></span></div>
+</body>
+</html> 

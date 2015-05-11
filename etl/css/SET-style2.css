@@ -1,0 +1,248 @@
+@import url(layout.css);
+body {
+	color: #000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: small;
+	font-style: normal;
+	background-color: #fff;
+}
+#container {
+	width: 100%;
+	margin: 0;
+	background-color: #fff;
+	position: relative;
+}
+#masthead {
+	text-align: right;
+	width: 100%;
+	/*background-color: #c5d5e5;   default colour */
+	/*background-color: #fba837;   bright orange  */
+	/*background-color: #df6019;   burnt orange   */
+	background:url('../images/fancy-glow-effects.jpg') no-repeat top left;
+	background-size: 100%;
+	background-color: #000000;
+}
+#page_content {
+	position: relative;
+	width: 100%;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #CCAA77;
+}
+#column_l {
+	float: none;
+	width: 70%;
+	max-width: 1100px;
+	margin: 0;
+	padding: 0px 5px 0px 5px;
+	background-color: #fff;
+	position: relative;
+}
+#column_c {
+	position: relative;
+	margin: 0;
+	width: 70%;
+	max-width: 1100px;
+	padding: 0px 5px 0px 5px;
+	background-color: #fff;
+	float: none;
+}
+#column_r {
+	float: none;
+	width: 25%;
+	max-width: 300px;
+	margin: 0;
+	padding: 0px 5px 0px 5px;
+	background-color: #cdf;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+#column_hr {
+	float: none;
+	width: 230px;
+	margin: 0;
+	padding: 10px;
+	/*background-color: #000;*/
+	position: absolute;
+	right: 0px;
+	top: 60px;
+}
+.colorBox1 {
+	/*font: bold large cursive;*/
+	border:1px solid #000000;
+	background-color:#ef7029;
+}
+#footer {
+	background-color: #df6019;
+	padding-bottom: 5px;
+}
+a img {
+	border: 0;
+}
+/* Styles for Masthead */
+#masthead img {
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+#masthead p {
+	font-size: small;
+	text-align: right;
+	color: #000;
+	margin: 10px 10px 10px 0;
+	padding: 0;
+}
+/* Styles for Navigation */
+#navigation {
+	background-color: #ca7;
+	overflow: hidden;
+}
+#navigation ul {
+	list-style-type: none;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+#navigation li {
+	float: left;
+}
+#navigation a {
+	color: #000;
+	text-decoration: none;
+	display: block;
+	padding: 5px;
+	border: 1px solid #ca7;
+	background-color: #dc8;
+}
+#navigation a:hover {
+	color: #000;
+	text-decoration: none;
+	border: 1px solid #ed9;
+	background-color: #ed9;
+}
+#navigation_sel {
+	color: #000000;
+	text-decoration: none;
+	background-color: #df6019;
+}
+/* Styles for Content */
+h1 {
+	font-size: 2em;
+	color: #393939;
+}
+h2 {
+	font-size: 1.75em;
+	color: #469;
+}
+h3 {
+	font-size: 1.5em;
+	color: #469;
+}
+h4w {
+	font-size: 1.25em;
+	color: #fff;
+}
+h4 {
+	font-size: 1.25em;
+	color: #469;
+}
+h5 {
+	font-size: 0.75em;
+	color: #469;
+}
+h6 {
+	font-size: 0.5em;
+	color: #469;
+}
+h7 {
+	font-size: 1.25em;
+	color: #393939;
+}
+/* Styles for Footer */
+#footer p {
+	font-size: x-small;
+	text-align: center;
+	color: #393939;
+	margin: 10px;
+	padding: 1px;
+}
+#footer a {
+	color: #393939;
+	text-decoration: underline;
+}
+#footer a:hover {
+	color: #000;
+	text-decoration: none;
+}
+/* Styles for Links */
+a {
+	color: #469;
+	text-decoration: underline;
+}
+a:hover {
+	color: #000;
+	text-decoration: underline;
+}
+.style_bold {
+	font-weight: bold;
+}
+.style_italic {
+	font-style: italic;
+}
+ul#nav {
+	margin: 0 0 0 0px;
+}
+ul.drop a { 
+	display:block; 
+	color: #fff; 
+	font-family: Verdana; 
+	font-size: 12px; 
+	text-decoration: none;
+}
+ul.drop, ul.drop li, ul.drop ul { 
+	list-style: none; 
+	margin: 0; 
+	padding: 0; 
+	border: 1px solid #fff; 
+	background: #df6019; 
+	color: #fff;
+}
+ul.drop { 
+	position: relative; 
+	z-index: 597; 
+	float: left; 
+}
+ul.drop li { 
+	float: left; 
+	line-height: 1.3em; 
+	vertical-align: middle; 
+	zoom: 1; 
+	padding: 5px 10px; 
+}
+ul.drop li.hover, ul.drop li:hover { 
+	position: relative; 
+	z-index: 599; 
+	cursor: default; 
+	background: #1e7c9a; 
+}
+ul.drop ul { 
+	visibility: hidden; 
+	position: absolute; 
+	top: 100%; 
+	left: 0; 
+	z-index: 598; 
+	width: 195px; 
+	background: #555; 
+	border: 1px solid #fff; 
+}
+ul.drop ul li { 
+	float: none; 
+}
+ul.drop ul ul { 
+	top: -2px; 
+	left: 100%; 
+}
+ul.drop li:hover > ul { 
+	visibility: visible;
+}
