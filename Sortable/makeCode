@@ -1,0 +1,22 @@
+#
+# FINAL BINARY Target
+./code : ./obj/CodingChallenge.o ./obj/Listing.o ./obj/ListingRepo.o ./obj/Product.o ./obj/ProductRepo.o
+	g++ ./obj/CodingChallenge.o ./obj/Listing.o ./obj/ListingRepo.o ./obj/Product.o \
+	./obj/ProductRepo.o \
+	./jsoncpp-src-0.5.0/libs/linux-gcc-4.8/libjson_linux-gcc-4.8_libmt.so -o ./code 
+# src/CodingChallenge.cpp src/Listing.cpp src/ListingRepo.cpp 
+# src/Product.cpp src/ProductRepo.cpp 
+# ./jsoncpp-src-0.5.0/libs/linux-gcc-4.8/libjson_linux-gcc-4.8_libmt.so
+# =======================================================
+#                     Dependencies
+# =======================================================                     
+./obj/CodingChallenge.o : ./src/CodingChallenge.cpp ./include/ListingRepo.h ./include/ProductRepo.h
+	g++ -c ./src/CodingChallenge.cpp -o ./obj/CodingChallenge.o 
+./obj/Listing.o : ./src/Listing.cpp ./include/Listing.h
+	g++ -c ./src/Listing.cpp -o ./obj/Listing.o 
+./obj/ListingRepo.o : ./src/ListingRepo.cpp ./include/ListingRepo.h ./include/Listing.h
+	g++ -c ./src/ListingRepo.cpp -o ./obj/ListingRepo.o 
+./obj/Product.o : ./src/Product.cpp ./include/Product.h
+	g++ -c ./src/Product.cpp -o ./obj/Product.o 
+./obj/ProductRepo.o : ./src/ProductRepo.cpp ./include/ProductRepo.h ./include/Product.h
+	g++ -c ./src/ProductRepo.cpp -o ./obj/ProductRepo.o 
